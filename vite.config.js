@@ -27,7 +27,7 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/service/, ""),
       },
       "/main": {
-        target: "http://192.168.50.35:8098",
+        target: "http://192.168.50.35:9000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/main/, ""),
       },

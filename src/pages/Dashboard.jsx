@@ -33,7 +33,7 @@ const { Option } = Select;
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
-
+  const [activePanel, setActivePanel] = useState(null);
   const [symbols, setSymbols] = useState([]);
   const [expiries, setExpiries] = useState([]);
   const [strikes, setStrikes] = useState([]);
@@ -554,7 +554,12 @@ const Dashboard = () => {
               bounds="window"
               minWidth={300}
               minHeight={200}
-              style={{ zIndex: 1000, position: "absolute" }}
+              style={{
+                zIndex: activePanel === key ? 1002 : 1000,
+
+                position: "absolute",
+              }}
+              onMouseDown={() => setActivePanel(key)}
             >
               <div
                 style={{
@@ -571,7 +576,7 @@ const Dashboard = () => {
                   style={{
                     padding: "4px 12px",
                     borderBottom: "1px solid #e8e8e8",
-                    background: "#c9d4e3",
+                    background: activePanel === key ? "#a8b9d1" : "#c9d4e3",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
